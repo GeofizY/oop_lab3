@@ -626,6 +626,20 @@
         "runtime": {
           "bin/placeholder/Models.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -1759,6 +1773,11 @@
       "type": "project",
       "path": "../Models/Models.csproj",
       "msbuildProject": "../Models/Models.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1767,6 +1786,7 @@
       "Microsoft.EntityFrameworkCore >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.Extensions.Configuration.Json >= 8.0.0",
+      "Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -1797,6 +1817,9 @@
           "projectReferences": {
             "G:\\GitHub\\OOP\\Trading\\DAL\\DAL.csproj": {
               "projectPath": "G:\\GitHub\\OOP\\Trading\\DAL\\DAL.csproj"
+            },
+            "G:\\GitHub\\OOP\\Trading\\Services\\Services.csproj": {
+              "projectPath": "G:\\GitHub\\OOP\\Trading\\Services\\Services.csproj"
             }
           }
         }
