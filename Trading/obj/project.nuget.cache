@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YAyO0CJ413F3ea7hrcojLgP+ST4kzG8wy5NNpgf5XJjdTSuWuBNKywRGJ0a1vt4tgmZaWQSiBP89kt1qBHtujw==",
+  "dgSpecHash": "2+PCPjQVVSRiSZni+e1QEGLyjk/5Apt2IvEFX0Vxy+FUu+IhQkA2Z8R5TVvtn7xwxLUHOqcUoIi83NGrS4io/A==",
   "success": true,
   "projectFilePath": "G:\\GitHub\\OOP\\Trading\\Trading\\Trading.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,8 @@
     "C:\\Users\\dimed\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\dimed\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
+    "C:\\Users\\dimed\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

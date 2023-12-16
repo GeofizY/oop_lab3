@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mi8/VW5uQOHBVtTjLn66e6Xn1u1fOAaHsZNx7c/7ctqrXF1WwPYog917zFN7aEOAooyLRBBTvLQK1QtMetOZ8Q==",
+  "dgSpecHash": "gGb4w6QjkX3hcFFIRB5bL1a7ndCL+CyRMloSmUWKknUhXU09VBVok3KfO952lWkyWhwRuR5Jp0Uchd+pm28xGg==",
   "success": true,
   "projectFilePath": "G:\\GitHub\\OOP\\Trading\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,8 @@
     "C:\\Users\\dimed\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\dimed\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
+    "C:\\Users\\dimed\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\dimed\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
