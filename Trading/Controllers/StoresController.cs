@@ -26,10 +26,16 @@ public class StoresController : ControllerBase
     public IActionResult BuyProducts([FromRoute] int storeid, [FromBody] List<BuyProductDto> dtos)
     {
         var total = _storeService.BuyProducts(storeid, dtos);
-        if (total == -1)
+        if (total == -404)
             return Ok("Операция невозможна\n(Требуемое количество товаров больше, чем есть на складе)");
         else
             return Ok($"Стоимость заказа: {total}");
+    }
+
+    [HttpPost("/delivery/{notwork}")] // пока не работает
+    public void ProductsDelivery([FromRoute]int notwork,[FromBody]List<ProductsDeliveryDto> dto)
+    {
+        _storeService.ProductsDelivery(notwork, dto);
     }
     
 }

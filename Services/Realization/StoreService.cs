@@ -40,14 +40,20 @@ public class StoreService : IStoreService
             }
             else
             {
-                total = -1;
+                total = -404;
                 break;
             }
         }
         
-        if (total != -1)
+        if (total != -404)
             _dbContext.SaveChanges();
         return total;
+    }
+
+    public void ProductsDelivery(int id, List<ProductsDeliveryDto> dtos)
+    {
+        var store = _dbContext.Stores.FirstOrDefault(x => x.StoreId == id);
+        // не доделал
     }
     
 }
