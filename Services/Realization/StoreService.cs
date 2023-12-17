@@ -13,9 +13,9 @@ public class StoreService : IStoreService
         _dbContext = dbContext;
     }
 
-    public int Create(int id, string name, string address)
+    public int Create(string name, string address)
     {
-        var store = new Store { StoreId = id, Name = name, Address = address };
+        var store = new Store { Name = name, Address = address };
         var newStore = _dbContext.Stores.Add(store);
         _dbContext.SaveChanges();
 

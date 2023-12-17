@@ -20,5 +20,16 @@ public class ProductsController : ControllerBase
     {
         _productService.Create(dto.Name);
     }
+
+    [HttpGet("/cheap/{name}")]
+    public IActionResult FindCheapStore([FromRoute] string name)
+    {
+        var store = _productService.FindCheapStore(name);
+        if (store != null)
+           return Ok(store);
+        else
+           return BadRequest("Товар не найден ни в одном магазине");
+
+    }
         
 }

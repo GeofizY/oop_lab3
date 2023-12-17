@@ -1,5 +1,7 @@
 ﻿using DAL;
+using Microsoft.EntityFrameworkCore;
 using Models;
+using Services.Dtos.Store;
 using Services.Interfaces;
 
 namespace Services.Realization;
@@ -20,6 +22,20 @@ public class ProductService : IProductService
         _dbContext.SaveChanges();
 
         return newProduct.Entity.Name;
+    }
+
+    public StoreDto? FindCheapStore(string name)
+    {
+        var store = _dbContext.ProductsInStore
+            .Include(x => x.Store)
+            .Where(x => x.ProductName == name)
+            .OrderBy(x => x.Price)
+            .FirstOrDefault();
+
+        if (store == null)
+            return new StoreDto();
+
+        return new StoreDto() { Name = store.Store.Name, Address = store.Store.Address };
     }
 
 }

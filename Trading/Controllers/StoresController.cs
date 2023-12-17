@@ -18,7 +18,7 @@ public class StoresController : ControllerBase
     [HttpPost]
     public void Create([FromBody]StoreDto dto)
     {
-        _storeService.Create(dto.StoreId, dto.Name, dto.Address);
+        _storeService.Create(dto.Name, dto.Address);
     }
     
 }

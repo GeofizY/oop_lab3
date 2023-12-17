@@ -2,5 +2,5 @@
 
 public interface IStoreService
 {
-    int Create(int id, string name, string address);
+    int Create(string name, string address);
 }
