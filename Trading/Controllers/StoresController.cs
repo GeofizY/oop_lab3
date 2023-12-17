@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services.Dtos.Product;
 using Services.Dtos.Store;
 using Services.Interfaces;
 
@@ -19,6 +20,16 @@ public class StoresController : ControllerBase
     public void Create([FromBody]StoreDto dto)
     {
         _storeService.Create(dto.Name, dto.Address);
+    }
+
+    [HttpPost("/purchase/{storeid}")]
+    public IActionResult BuyProducts([FromRoute] int storeid, [FromBody] List<BuyProductDto> dtos)
+    {
+        var total = _storeService.BuyProducts(storeid, dtos);
+        if (total == -1)
+            return Ok("Операция невозможна\n(Требуемое количество товаров больше, чем есть на складе)");
+        else
+            return Ok($"Стоимость заказа: {total}");
     }
     
 }
