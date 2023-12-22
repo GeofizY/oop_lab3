@@ -17,25 +17,25 @@ public class StoresController : ControllerBase
     }
 
     [HttpPost]
-    public void Create([FromBody]StoreDto dto)
+    public void Create([FromBody]StoreDto entityStore)
     {
-        _storeService.Create(dto.Name, dto.Address);
+        _storeService.Create(entityStore.Name, entityStore.Address);
     }
 
     [HttpPost("/purchase/{storeid}")]
-    public IActionResult BuyProducts([FromRoute] int storeid, [FromBody] List<BuyProductDto> dtos)
+    public IActionResult BuyProducts([FromRoute] int storeid, [FromBody] List<BuyProductDto> entitiesProducts)
     {
-        var total = _storeService.BuyProducts(storeid, dtos);
+        var total = _storeService.BuyProducts(storeid, entitiesProducts);
         if (total == -404)
             return Ok("Операция невозможна\n(Требуемое количество товаров больше, чем есть на складе)");
         else
             return Ok($"Стоимость заказа: {total}");
     }
 
-    [HttpPost("/delivery/{notwork}")] // пока не работает
-    public void ProductsDelivery([FromRoute]int notwork,[FromBody]List<ProductsDeliveryDto> dto)
+    [HttpPost("/delivery/{storeid}")]
+    public void ProductsDelivery([FromRoute]int storeid,[FromBody]List<ProductsDeliveryDto> entitiesProducts)
     {
-        _storeService.ProductsDelivery(notwork, dto);
+        _storeService.ProductsDelivery(storeid, entitiesProducts);
     }
     
 }

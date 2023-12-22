@@ -20,19 +20,19 @@ public class StoreService : IStoreService
         var newStore = _dbContext.Stores.Add(store);
         _dbContext.SaveChanges();
 
-        return newStore.Entity.StoreId;
+        return newStore.Entity.StoreId+1;
     }
 
-    public decimal BuyProducts(int id, List<BuyProductDto> dtos)
+    public decimal BuyProducts(int id, List<BuyProductDto> entitiesProducts)
     {
         var products = _dbContext.ProductsInStore
             .Where(x => x.StoreId == id)
-            .Where(x => dtos.Select(y => y.ProductName).Contains(x.ProductName));
+            .Where(x => entitiesProducts.Select(y => y.ProductName).Contains(x.ProductName));
 
         decimal total = 0;
         foreach (var product in products)
         {
-            var neededQuantity = dtos.FirstOrDefault(x => x.ProductName == product.ProductName).Quantity;
+            var neededQuantity = entitiesProducts.FirstOrDefault(x => x.ProductName == product.ProductName).Quantity;
             if (product.Quantity >= neededQuantity)
             {
                 total += product.Price * neededQuantity;
@@ -50,10 +50,34 @@ public class StoreService : IStoreService
         return total;
     }
 
-    public void ProductsDelivery(int id, List<ProductsDeliveryDto> dtos)
+    public void ProductsDelivery(int id, List<ProductsDeliveryDto> entitiesProducts)
     {
         var store = _dbContext.Stores.FirstOrDefault(x => x.StoreId == id);
-        // не доделал
+
+        if (store == null) return;
+
+        var storeProducts = entitiesProducts.Select(x => new ProductInStore
+        {
+            StoreId = id,
+            ProductName = x.ProductName,
+            Price = x.Price,
+            Quantity = x.Quantity
+        }).ToList().Distinct();
+
+        var existProducts = _dbContext.ProductsInStore
+            .Where(x => x.StoreId == id)
+            .Where(x => entitiesProducts.Select(y => y.ProductName).Contains(x.ProductName));
+
+        var newProducts = storeProducts.ExceptBy(existProducts.Select(x => x.ProductName), x => x.ProductName);
+        _dbContext.ProductsInStore.AddRange(newProducts);
+
+        foreach (var existProduct in existProducts)
+        {
+            existProduct.Quantity += storeProducts.FirstOrDefault(y => y.ProductName == existProduct.ProductName).Quantity;
+            existProduct.Price = storeProducts.FirstOrDefault(y => y.ProductName == existProduct.ProductName).Price;
+        }
+
+        _dbContext.SaveChanges();
     }
     
 }

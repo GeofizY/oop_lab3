@@ -16,9 +16,9 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public void Create([FromBody] ProductDto dto)
+    public void Create([FromBody] ProductDto entityProduct)
     {
-        _productService.Create(dto.Name);
+        _productService.Create(entityProduct.Name);
     }
 
     [HttpGet("/cheap/{name}")]
