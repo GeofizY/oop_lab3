@@ -31,5 +31,13 @@ public class ProductsController : ControllerBase
            return BadRequest("Товар не найден ни в одном магазине");
 
     }
+
+    [HttpPost("/cheapcollection")]
+    public IActionResult FindCollectionInCheapestStore([FromBody]List<BuyProductDto> entitiesProducts)
+    {
+        var store = _productService.FindCollectionInCheapestStore(entitiesProducts);
+        if (store != null) return Ok(store);
+        else return BadRequest("Такой набор товаров не продают ни в одном магазине");
+    }
         
 }
