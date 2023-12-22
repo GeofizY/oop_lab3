@@ -37,5 +37,11 @@ public class StoresController : ControllerBase
     {
         _storeService.ProductsDelivery(storeid, entitiesProducts);
     }
-    
+
+    [HttpPost("/givemeyourmoney/{storeid}")]
+    public IEnumerable<ProductsDeliveryDto> PayingCapacity([FromRoute]int storeid, [FromBody]decimal money)
+    {
+        return _storeService.PayingCapacity(storeid, money);
+    }
+
 }

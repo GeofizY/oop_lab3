@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Services.Dtos.Product;
 using Services.Interfaces;
@@ -78,6 +79,32 @@ public class StoreService : IStoreService
         }
 
         _dbContext.SaveChanges();
+    }
+
+    public List<ProductsDeliveryDto> PayingCapacity(int id, decimal money)
+    {
+        var products = _dbContext.ProductsInStore
+            .Where(x => x.StoreId == id)
+            .Where(x => x.Price <= money && x.Price > 0)
+            .Where(x => x.Quantity > 0)
+            .Include(x => x.Product);
+
+        var availableProducts = new List<ProductsDeliveryDto>();
+        foreach (var product in products)
+        {
+            int count = Decimal.ToInt32(money / product.Price);
+            if (product.Quantity < count)
+                count = product.Quantity;
+            
+            availableProducts.Add(new ProductsDeliveryDto()
+            {
+                ProductName = product.ProductName,
+                Price = product.Price,
+                Quantity = count
+            });
+        }
+
+        return availableProducts;
     }
     
 }
