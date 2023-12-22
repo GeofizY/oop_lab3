@@ -14,7 +14,6 @@ builder.Services.AddDbContext<StoreDbContext>(x => x.UseNpgsql(builder.Configura
 builder.Services.AddScoped<IStoreService, StoreService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
